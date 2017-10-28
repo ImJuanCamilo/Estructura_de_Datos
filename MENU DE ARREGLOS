@@ -1,0 +1,202 @@
+/*REALIZADO POR
+JUAN CAMILO ALVARADO    ID 540279
+ERICK BENAVIDES     ID 564555
+
+PRESENTADO AL DOCENTE = ALONSO GUEVARA  
+*/
+import java.util.Random;
+import java.util.Scanner;
+
+public class ordenamientos {
+
+    public static void main(String[] args) {
+        int i, j;
+        int numero = 0;
+        int opcion = 1;
+        Random Rd = new Random(System.nanoTime());
+        Scanner entrada = new Scanner(System.in);
+        int vector[] = new int[10];
+
+        int matriz[][];
+        matriz = new int[3][3];
+
+        while (opcion != 0) {
+            System.out.println("1. Imprimir Vector Random");
+            System.out.println("2. Imprimir Matriz Random");
+            System.out.println("3. Vector Ordenado Descendente");
+            System.out.println("4. Vector Ordenado Ascendente");
+            System.out.println("5. Matriz Ordenada Ascendente");
+            System.out.println("6. Matriz Ordenada Descendente");
+            opcion = entrada.nextInt();
+
+            switch (opcion) {
+                case 1:
+                    System.out.println("USTED HA SELECCIONADO IMPRIMIR VECTOR RANDOM");
+                    System.out.print("DIGITE EL LIMITE DE NUMEROS ALEATORIOS = ");
+                    numero = entrada.nextInt();
+                    for (i = 0; i < 10; i++) {
+                        vector[i] = Rd.nextInt(numero);
+                    }
+                    for (i = 0; i < 10; i++) {
+                        System.out.print("\t" + vector[i]);
+
+                    }
+                    System.out.println("\n");
+                    break;
+
+                case 2:
+                    System.out.println("USTED HA SELECCIONADO IMPRIMIR MATRIZ RANDOM");
+                    System.out.print("DIGITE EL LIMITE DE NUMEROS ALEATORIOS = ");
+                    numero = entrada.nextInt();
+                    for (i = 0; i < 3; i++) {
+                        for (j = 0; j < 3; j++) {
+                            matriz[i][j] = Rd.nextInt(numero);
+                            System.out.print(matriz[i][j] + "\t");
+
+                        }
+                        System.out.println("\n");
+
+                    }
+
+                    System.out.println("\n");
+                    break;
+
+                case 3:
+                    System.out.println("USTED HA SELECCIONADO VECTOR ORDENADO DESCENDENTEMENTE");
+                    System.out.print("DIGITE EL LIMITE DE NUMERO ALEATORIOS = ");
+                    numero = entrada.nextInt();
+
+                    for (i = 0; i < 10; i++) {
+                        vector[i] = Rd.nextInt(numero);
+                    }
+                    for (i = 0; i < 10; i++) {
+                        System.out.print("\t" + vector[i]);
+                    }
+                    for (i = 1; i < 10; i++) {
+                        for (j = 0; j < i; j++) {
+                            if (vector[i] > vector[j]) {
+                                int mayor = (int) vector[j];
+                                vector[j] = vector[i];
+                                vector[i] = mayor;
+                            }
+
+                        }
+                    }
+                    System.out.println("\nEl vector ordenado descendentemente = ");
+                    for (i = 0; i < 10; i++) {
+                        System.out.print("\t" + vector[i]);
+
+                    }
+                    System.out.println("\n");
+
+                    break;
+
+                case 4:
+                    System.out.println("USTED HA SELECCIONADO VECTOR ORDENADO ASCENDENTEMENTE");
+                    System.out.print("DIGITE EL LIMITE DE NUMEROS ALEATORIOS = ");
+                    numero = entrada.nextInt();
+
+                    for (i = 0; i < 10; i++) {
+                        vector[i] = Rd.nextInt(numero);
+                    }
+
+                    for (i = 0; i < 10; i++) {
+                        System.out.print("\t" + vector[i]);
+                        for (j = 0; j < 10 - 1; j++) {
+                            if (vector[j] > vector[j + 1]) {
+                                int mayor = (int) vector[j];
+                                vector[j] = vector[j + 1];
+                                vector[j + 1] = mayor;
+                            }
+
+                        }
+                    }
+                    System.out.println("\nEl vector ordenado ascendentemente = ");
+                    for (i = 0; i < 10; i++) {
+                        System.out.print("\t" + vector[i]);
+                    }
+                    System.out.println("\n");
+                    break;
+
+                case 5:
+                    System.out.println("USTED HA SELECCIONADO MATRIZ ORDENADA ASCENDENTE");
+
+                    System.out.print("DIGITE EL LIMITE DE NUMEROS ALEATORIOS = ");
+                    numero = entrada.nextInt();
+                    for (i = 0; i < 3; i++) {
+                        for (j = 0; j < 3; j++) {
+                            matriz[i][j] = Rd.nextInt(numero);
+                            System.out.print(matriz[i][j] + "\t");
+                        }
+                        System.out.print(" " + "\n");
+                    }
+                    System.out.println("MATRIZ ORDENADA ASCENDENTE = ");
+                    for (i = 0; i < 3; i++) {
+                        for (j = 0; j < 3; j++) {
+                            for (int x = 0; x < 3; x++) {
+                                for (int y = 0; y < 3; y++) {
+                                    if (matriz[i][j] < matriz[x][y]) {
+                                        int t = matriz[i][j];
+                                        matriz[i][j] = matriz[x][y];
+                                        matriz[x][y] = t;
+
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                    for (i = 0; i < 3; i++) {
+                        for (j = 0; j < 3; j++) {
+                            System.out.print(matriz[i][j] + "\t ");
+                        }
+                        System.out.print(" " + "\n");
+                    }
+                    System.out.println("\n");
+
+                    break;
+                    
+                case 6:
+                     System.out.println("USTED HA SELECCIONADO MATRIZ ORDENADA DESCENDENTE");
+
+                    System.out.print("DIGITE EL LIMITE DE NUMEROS ALEATORIOS = ");
+                    numero = entrada.nextInt();
+                    for (i = 0; i < 3; i++) {
+                        for (j = 0; j < 3; j++) {
+                            matriz[i][j] = Rd.nextInt(numero);
+                            System.out.print(matriz[i][j] + "\t");
+                        }
+                        System.out.print(" " + "\n");
+                    }
+                    System.out.println("MATRIZ ORDENADA DESCENDENTE = ");
+                    for (i = 0; i < 3; i++) {
+                        for (j = 0; j < 3; j++) {
+                            for (int x = 0; x < 3; x++) {
+                                for (int y = 0; y < 3; y++) {
+                                    if (matriz[i][j] > matriz[x][y]) {
+                                        int t = matriz[i][j];
+                                        matriz[i][j] = matriz[x][y];
+                                        matriz[x][y] = t;
+
+                                    }
+                                }
+                            }
+                        }
+
+                    }
+                    for (i = 0; i < 3; i++) {
+                        for (j = 0; j < 3; j++) {
+                            System.out.print(matriz[i][j] + "\t ");
+                        }
+                        System.out.print(" " + "\n");
+                    }
+                    System.out.println("\n");
+
+                    break;
+                    
+            }
+        }
+
+    }
+
+}
